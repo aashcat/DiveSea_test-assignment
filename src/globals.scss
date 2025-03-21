@@ -1,0 +1,52 @@
+.global-container {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+
+    @media (min-width: 1921px) {
+        transform-origin: top center;
+
+        // При 2K (2560px)
+        @media (min-width: 2560px) and (max-width: 3839px) {
+            transform: scale(1.2);
+            max-width: 2133px; // 1920px * 1.2 - чтобы компенсировать масштабирование
+        }
+
+        // При 4K (3840px и выше)
+        @media (min-width: 3840px) {
+            transform: scale(1.7);
+            max-width: 3264px; // 1920px * 1.7
+        }
+    }
+}
+
+/* Стиль для хедера на больших экранах - он находится вне глобального контейнера */
+@media (min-width: 1921px) {
+    header {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+}
+
+// Опционально - добавить переменные для удобного использования
+:root {
+    --container-padding-mobile: 30px;
+    --container-padding-tablet: 67px;
+    --container-padding-desktop: 97px;
+}
+
+.content-container {
+    width: 100%;
+    padding-left: var(--container-padding-mobile);
+    padding-right: var(--container-padding-mobile);
+
+    @media (min-width: 1024px) {
+        padding-left: var(--container-padding-tablet);
+        padding-right: var(--container-padding-tablet);
+    }
+
+    @media (min-width: 1440px) {
+        padding-left: var(--container-padding-desktop);
+        padding-right: var(--container-padding-desktop);
+    }
+}
